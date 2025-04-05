@@ -16,11 +16,31 @@ import random
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
+Windows_10_Chrome = "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+Ubuntu_Linux_Chrome = "--user-agent=Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+macOS_Chrome = "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36"
+Android_Chrome = "--user-agent=Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Mobile Safari/537.36"
+Windows_10_Firefox = "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/137.0"
+Ubuntu_Linux_Firefox = "--user-agent=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:123.0) Gecko/20100101 Firefox/137.0"
+macOS_Firefox = "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7; rv:123.0) Gecko/20100101 Firefox/137.0"
+Android_Firefox = "--user-agent=Mozilla/5.0 (Android 13; Mobile; rv:123.0) Gecko/123.0 Firefox/137.0"
+Windows_10_Edge = "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/123.0.0.0"
+macOS_Edge = "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/123.0.0.0"
+macOS_Safari = "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Version/18.0 Safari/537.36"
+iPhone_Safari = "--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/537.36"
+iPad_Safari = "--user-agent=Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X) AppleWebKit/537.36 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/537.36"
+Internet_Explorer_11_Windows_10 = "--user-agent=Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko"
+
+Fool = ['Windows_10_Chrome', 'Android_Chrome', 'Ubuntu_Linux_Chrome', 'iPhone_Safari', 'Android_Chrome', 'Windows_10_Chrome', 'macOS_Chrome', 'Android_Chrome', 'Windows_10_Chrome', 'Android_Chrome', 'iPhone_Safari', 'Android_Chrome', 'Windows_10_Firefox', 'Android_Chrome', 'iPhone_Safari', 'Android_Chrome', 'Ubuntu_Linux_Firefox', 'Android_Chrome', 'iPhone_Safari', 'Android_Chrome', 'macOS_Firefox', 'Android_Chrome', 'iPhone_Safari', 'Android_Firefox', 'macOS_Safari', 'Android_Chrome', 'iPhone_Safari', 'Android_Chrome', 'Internet_Explorer_11_Windows_10', 'Android_Chrome', 'Windows_10_Edge', 'Windows_10_Chrome', 'Android_Chrome']
+Fool_bro = random.choice(Fool)
+
 options = webdriver.ChromeOptions()
 options.binary_location = "/usr/bin/chromium-browser"
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-blink-features=AutomationControlled")
+options.add_argument(f"--user-agent={Fool_bro}")
 options.add_argument("--window-size=1345x610")
 driver = webdriver.Chrome(options=options)
 driver.set_window_size(1354, 610)
