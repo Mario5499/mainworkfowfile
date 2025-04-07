@@ -16,15 +16,15 @@ driver.set_window_size(1354, 610)
 actions = ActionChains(driver)
 print("script started")
 
-driver.get("https://bdgame.in/code/Pytho_code_1.html")
+driver.get("https://bdgame.in/code/Pytho_code_2.html")
 time.sleep(5)
 
 textarea_element = driver.find_element("id", "lion")
 
 code = textarea_element.get_attribute('value')
 
-with open("pythoncode1.py", "w") as file:
+with open("pythoncode2.py", "w") as file:
     file.write(code)
 driver.quit()
-result = subprocess.run(["python3", "pythoncode1.py"], capture_output=True, text=True)
+result = subprocess.run(["python3", "pythoncode2.py"], capture_output=True, text=True)
 print("Output of pythoncode1.py:", result.stdout)
