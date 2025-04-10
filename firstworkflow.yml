@@ -1030,4 +1030,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run rebirth_and_die.py
-        run: docker run --rm my-app python3 rebirth_and_die.py
+        run: docker run --rm my-app python3 pythoncode_rebirth_and_die.py
