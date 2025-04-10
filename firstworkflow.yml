@@ -1025,16 +1025,9 @@ jobs:
       - name: Run pythoncode_twelve.py
         run: docker run --rm my-app python3 pythoncode_twelve.py
 
-  run-rebirth:
+  run-rebirth_die:
     needs: [run-pythoncode_twelve1, run-pythoncode_twelve2, run-pythoncode_twelve3, run-pythoncode_twelve4,run-pythoncode_twelve5, run-pythoncode_twelve6, run-pythoncode_twelve7, run-pythoncode_twelve8, run-pythoncode_twelve9, run-pythoncode_twelve10, run-pythoncode_twelve11, run-pythoncode_twelve12]
     runs-on: ubuntu-latest
     steps:
-      - name: Run rebirth.py
-        run: docker run --rm my-app python3 rebirth.py
-
-  run-die:
-    needs: [run-pythoncode_twelve1, run-pythoncode_twelve12, run-rebirth]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run die.py
-        run: docker run --rm my-app python3 die.py
+      - name: Run rebirth_and_die.py
+        run: docker run --rm my-app python3 rebirth_and_die.py
