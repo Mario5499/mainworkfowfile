@@ -1,0 +1,6 @@
+olduserid = "bashgular@protonmail.com"
+oldpassid = "H6AUQED8BX"
+oldgitid = "Mario5499"
+oldgitpass = "nOeFvigOq7Gnd"
+oldgitreponame = "bossofthebosses"
+oldworkflowname = "dockerun"
