@@ -32,4 +32,4 @@ with open("gen_script.py", "w") as f:
         variable = f"pyco{i} = '''{template.format(index=i)}'''\n\n"
         f.write(variable)
 
-print("✅ File 'gen_script.py' created with pyco1 to pyco12.")
+
