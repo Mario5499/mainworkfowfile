@@ -5,7 +5,7 @@ import time
 import subprocess
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from all_git_passes import userid, passid , gitid, gitpass, gitdashboard, gitnew, gitprofie, gitreponame, giturl, gitlogurl, gitblankfile, docke1, dokereponame, workflowname, crreateanewblankworkflow, newfie, newfiereponame, workingflow
+from all_git_passes import userid, passid , gitid, gitpass, gitdashboard, gitnew, gitprofie, gitreponame, giturl, gitlogurl, gitblankfile, docke1, dokereponame, workflowname, crreateanewblankworkflow, newfie, newfiereponame, boiled, workrep, pyco1, pyco2, pyco3, pyco4, pyco5, pyco6, pyco7, pyco8, pyco9, pyco10, pyco11, pyco12, pyco_one, pyco_two, pyco_three, pyco_four, pyco_five, pyco_six, pyco_seven, pyco_eight, pyco_nine, pyco_ten, pyco_eleven, pyco_twelve
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
@@ -163,12 +163,47 @@ try:
     fillo.send_keys(gitreponame)
 except NoSuchElementException:
     print("error")
-#fillo.send_keys(gitreponame)
 time.sleep(random.uniform(5,10))
 crtbutton = driver.find_element(By.XPATH, "//button[span/span[text()='Create repository']]")
 crtbutton.click()
-#sudd.click()
 time.sleep(random.uniform(8,20))
+
+
+def carkichabi (contentoo, naamoo):
+    driver.get(gitblankfile)
+    time.sleep(random.uniform(8,20))
+    ActionChains(driver).send_keys(contentoo).perform()
+    time.sleep(random.uniform(20,50))
+
+    djrockk = '//*[@id="repo-content-pjax-container"]/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[1]/div/div[2]/span[2]/input'
+    sanataan = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, djrockk))
+        )
+    sanataan.send_keys(naamoo)
+
+    crtbutton = driver.find_element(By.XPATH, "//button[span/span[text()='Commit changes...']]")
+    crtbutton.click()
+    time.sleep(random.uniform(5,15))
+    ActionChains(driver).send_keys(Keys.ENTER).perform()
+
+    time.sleep(random.uniform(5,50))
+
+
+
+carkichabi (pyco_eight, pyco8)
+carkichabi (pyco_four, pyco4)
+carkichabi (pyco_twelve, pyco12)
+carkichabi (pyco_nine, pyco9)
+carkichabi (pyco_six, pyco6)
+carkichabi (pyco_three, pyco3)
+carkichabi (pyco_eleven, pyco11)
+carkichabi (pyco_two, pyco2)
+carkichabi (pyco_seven, pyco7)
+carkichabi (pyco_one, pyco1)
+carkichabi (pyco_ten, pyco10)
+carkichabi (pyco_five, pyco5)
+
+
 driver.get(gitblankfile)
 time.sleep(random.uniform(8,20))
 ActionChains(driver).send_keys(docke1).perform()
@@ -180,119 +215,48 @@ sanataan = WebDriverWait(driver, 10).until(
     )
 sanataan.send_keys(dokereponame)
 
-comitbut = '//*[@id="repo-content-pjax-container"]/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[2]/button/span/span'
-commiert = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, comitbut))
-    )
-commiert.click()
+crtbutton = driver.find_element(By.XPATH, "//button[span/span[text()='Commit changes...']]")
+crtbutton.click()
+time.sleep(random.uniform(5,15))
+ActionChains(driver).send_keys(Keys.ENTER).perform()
 
-comitbut2 = '//*[@id="__primerPortalRoot__"]/div/div/div/div[3]/button[2]/span/span'
-             
-commiert2 = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, comitbut2))
-    )
-commiert2.click()
-time.sleep(random.uniform(5,10))
+time.sleep(random.uniform(5,50))
 
-driver.get(gitblankfile)
-time.sleep(random.uniform(50,200))
-try:
-    ActionChains(driver).send_keys(newfie).perform()
-    time.sleep(random.uniform(20,60))
-except NoSuchElementException:
-    print("error101")
-djrock = '//*[@id="repo-content-pjax-container"]/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[1]/div[2]/div[2]/span[2]/input'
-sanatan = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, djrock))
-    )
-try:
-    sanatan.send_keys(newfiereponame)
-    time.sleep(random.uniform(5,10))
-except:
-    print("error10001")
-try:
-    comitbut = '//*[@id="repo-content-pjax-container"]/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[2]/button'
-    commiert = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, comitbut))
-        )
-    commiert.click()
-except:
-    print("com1 error")
-time.sleep(random.uniform(5,10))
-try:
-    comitbut22 = '//*[@id="__primerPortalRoot__"]/div/div/div/div[3]/button[2]'
-    commiert2 = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, comitbut22))
-        )
-    commiert2.click()
-except:
-    print("com2 error")
 
 driver.get(crreateanewblankworkflow)
 time.sleep(random.uniform(50,200))
-ActionChains(driver).send_keys("name: Docker Image CI").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("on:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("  push:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys('''  branches: [ "main" ]''').perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys("pull_request:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys('''  branches: [ "main" ]''').perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("jobs:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("  build-and-run:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("    runs-on: ubuntu-latest").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("    steps:").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("- name: Checkout code").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("  uses: actions/checkout@v4").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys("- name: Build the Docker image").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("  run: docker build -t my-app .").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys(Keys.BACKSPACE).perform()
-ActionChains(driver).send_keys("- name: Run the Docker container").perform()
-ActionChains(driver).send_keys(Keys.ENTER).perform()
-ActionChains(driver).send_keys("  run: docker run --rm my-app python3 newtest.py").perform()
+
+# Start boilerplate
+boiled(Keys, ActionChains, driver)
+
+# Prefix list
+prefixes = [
+    "one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "eleven", "twelve"
+]
+
+# Loop through stages
+for idx, prefix in enumerate(prefixes):
+    job_gg = f"pythoncode_{prefix}1:"
+    script_name = f"pythoncode_{prefix}.py"
+    docker_cmd = f"docker run --rm my-app python3 {script_name}"
+
+    if idx == 0:
+        needs = "build"
+    else:
+        prev_prefix = prefixes[idx - 1]
+        needs = f"run-pythoncode_{prev_prefix}1"
+
+    workrep(time, Keys, ActionChains, driver, job_gg, needs, f" Run {script_name}", docker_cmd)
+    time.sleep(2)
+
+
 time.sleep(random.uniform(10,50))
-try:
-    comitbut = '//*[@id="repo-content-pjax-container"]/react-app/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[1]/div[2]/button'
-    commiert = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, comitbut))
-        )
-    commiert.click()
-except:
-    print("com1 error")
-try:
-    comitbut22 = '//*[@id="__primerPortalRoot__"]/div/div/div/div[3]/button[2]'
-    commiert2 = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, comitbut22))
-        )
-    commiert2.click()
-except:
-    print("com2 error")
+crtbutton = driver.find_element(By.XPATH, "//button[span/span[text()='Commit changes...']]")
+crtbutton.click()
+time.sleep(random.uniform(5,15))
+ActionChains(driver).send_keys(Keys.ENTER).perform()
+
 
 time.sleep(random.uniform(50,100))
 driver.quit()
