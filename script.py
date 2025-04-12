@@ -27,9 +27,19 @@ driver.quit()
 result = subprocess.run(["python3", "pythoncode{index}.py"], capture_output=True, text=True)
 print("Output of pythoncode{index}.py:", result.stdout)'''
 
-with open("gen_script.py", "w") as f:
+pyname_path1 = "/app/gen_script.py"
+with open(pyname_path1, "w") as f:
     for i in range(1, 13):
         variable = f"pyco{i} = '''{template.format(index=i)}'''\n\n"
         f.write(variable)
 
+pyname_path2 = "/app/genge_script.py"
+prefixes = [
+    "one", "two", "three", "four", "five", "six",
+    "seven", "eight", "nine", "ten", "eleven", "twelve"
+]
 
+with open(pyname_path2, "w") as f:
+    for prefix in prefixes:
+        line = f'pyco_{prefix} = "pythoncode_{prefix}.py"\n'
+        f.write(line)
