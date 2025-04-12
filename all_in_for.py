@@ -1,0 +1,6 @@
+userid = "bashgular@protonmail.com"
+passid = "H6AUQED8BX"
+gitid = "Mario5499"
+gitpass = "nOeFvigOq7Gnd"
+gitreponame = "bossofthebosses"
+workflowname = "dockerun"
