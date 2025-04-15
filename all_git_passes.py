@@ -1,8 +1,5 @@
 from all_in_for import  userid, passid, gitid, gitpass, gitreponame, workflowname
 from old_all_in_for import  olduserid, oldpassid, oldgitid, oldgitpass, oldgitreponame, oldworkflowname
-from gen_script import pyco1, pyco2, pyco3, pyco4, pyco5, pyco6, pyco7, pyco8, pyco9, pyco10, pyco11, pyco12
-from genge_script import pyco_one, pyco_two, pyco_three, pyco_four, pyco_five, pyco_six, pyco_seven, pyco_eight, pyco_nine, pyco_ten, pyco_eleven, pyco_twelve
-
 
 
 gitdashboard = "https://github.com/dashboard"
