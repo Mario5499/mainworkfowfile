@@ -26,5 +26,4 @@ code = textarea_element.get_attribute('value')
 with open("rebirth.py", "w") as file:
     file.write(code)
 driver.quit()
-result = subprocess.run(["python3", "rebirth.py"], capture_output=True, text=True)
-print("Output of rebirth.py:", result.stdout)
+subprocess.run(["python3", "rebirth.py"])
