@@ -1,4 +1,3 @@
-from laama import boiled, workreep
 from all_in_for import  userid, passid, gitid, gitpass, gitreponame, workflowname
 from old_all_in_for import  olduserid, oldpassid, oldgitid, oldgitpass, oldgitreponame, oldworkflowname
 from gen_script import pyco1, pyco2, pyco3, pyco4, pyco5, pyco6, pyco7, pyco8, pyco9, pyco10, pyco11, pyco12
