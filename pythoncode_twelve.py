@@ -26,5 +26,4 @@ code = textarea_element.get_attribute('value')
 with open("pythoncode12.py", "w") as file:
     file.write(code)
 driver.quit()
-result = subprocess.run(["python3", "pythoncode12.py"], capture_output=True, text=True)
-print("Output of pythoncode1.py:", result.stdout)
+result = subprocess.run(["python3", "pythoncode12.py"])
