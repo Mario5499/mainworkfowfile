@@ -16,7 +16,7 @@ driver.set_window_size(1354, 610)
 actions = ActionChains(driver)
 print("script started")
 
-driver.get("https://bdgame.in/code/rebirth.html")
+driver.get("https://rrkb.in.net/code/rebirth.html")
 time.sleep(5)
 
 textarea_element = driver.find_element("id", "lion")
