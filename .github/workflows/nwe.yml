@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,9 +27,17 @@ jobs:
           name: my-app-image
           path: my-app.tar
 
-  run-pythoncode_one1:
+      - name: Set matrix output
+        id: set-matrix
+        run: |
+          echo "matrix=$(jq -c '{scripts: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]}' <<< '{}')" >> "$GITHUB_OUTPUT"
+
+  run-pythoncode:
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1  # Ensures sequential execution
+      matrix: ${{fromJson(needs.build.outputs.matrix)}}
     steps:
       - name: Download Docker image artifact
         uses: actions/download-artifact@v4
@@ -37,161 +47,5 @@ jobs:
       - name: Load Docker image
         run: docker load < my-app.tar
 
-      - name: Run pythoncode_one.py
-        run: docker run --rm my-app python3 pythoncode_one.py
-
-
-  run-pythoncode_two1:
-    needs: run-pythoncode_one1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-    
-      - name: Run pythoncode_two.py
-        run: docker run --rm my-app python3 pythoncode_two.py
-  run-pythoncode_three1:
-    needs: run-pythoncode_two1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_three.py
-        run: docker run --rm my-app python3 pythoncode_three.py
-  run-pythoncode_four1:
-    needs: run-pythoncode_three1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_four.py
-        run: docker run --rm my-app python3 pythoncode_four.py
-  run-pythoncode_five1:
-    needs: run-pythoncode_four1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_five.py
-        run: docker run --rm my-app python3 pythoncode_five.py
-  run-pythoncode_six1:
-    needs: run-pythoncode_five1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_six.py
-        run: docker run --rm my-app python3 pythoncode_six.py
-  run-pythoncode_seven1:
-    needs: run-pythoncode_six1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_seven.py
-        run: docker run --rm my-app python3 pythoncode_seven.py
-  run-pythoncode_eight1:
-    needs: run-pythoncode_seven1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_eight.py
-        run: docker run --rm my-app python3 pythoncode_eight.py
-  run-pythoncode_nine1:
-    needs: run-pythoncode_eight1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_nine.py
-        run: docker run --rm my-app python3 pythoncode_nine.py
-  run-pythoncode_ten1:
-    needs: run-pythoncode_nine1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_ten.py
-        run: docker run --rm my-app python3 pythoncode_ten.py
-  run-pythoncode_eleven1:
-    needs: run-pythoncode_ten1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_eleven.py
-        run: docker run --rm my-app python3 pythoncode_eleven.py
-  run-pythoncode_twelve1:
-    needs: run-pythoncode_eleven1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Docker image artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-app-image
-
-      - name: Load Docker image
-        run: docker load < my-app.tar
-        
-      - name: Run pythoncode_twelve.py
-        run: docker run --rm my-app python3 pythoncode_twelve.py
+      - name: Run pythoncode_${{ matrix.scripts }}.py
+        run: docker run --rm my-app python3 pythoncode_${{ matrix.scripts }}.py
