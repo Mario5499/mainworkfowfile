@@ -1,0 +1,41 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t my-app .
+
+      - name: Save Docker image to file
+        run: docker save my-app > my-app.tar
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-app-image
+          path: my-app.tar
+
+  run-pythoncode_one1:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Docker image artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-app-image
+
+      - name: Load Docker image
+        run: docker load < my-app.tar
+
+      - name: Run pythoncode_one.py
+        run: docker run --rm my-app python3 pythoncode_one.py
