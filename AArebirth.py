@@ -5,7 +5,7 @@ import time
 import subprocess
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from all_git_passes import userid, passid , gitid, gitpass, gitdashboard, gitnew, gitprofie, gitreponame, giturl, gitlogurl, gitblankfile, docke1, dokereponame, workflowname, crreateanewblankworkflow, newfie, newfiereponame, boiled, workrep, pyco1, pyco2, pyco3, pyco4, pyco5, pyco6, pyco7, pyco8, pyco9, pyco10, pyco11, pyco12, pyco_one, pyco_two, pyco_three, pyco_four, pyco_five, pyco_six, pyco_seven, pyco_eight, pyco_nine, pyco_ten, pyco_eleven, pyco_twelve
+from all_git_passes import userid, passid , gitid, gitpass, gitdashboard, gitnew, gitprofie, gitreponame, giturl, gitlogurl, gitblankfile, docke1, dokereponame, workflowname, crreateanewblankworkflow, newfie, newfiereponame, boiled, pyco1, pyco2, pyco3, pyco4, pyco5, pyco6, pyco7, pyco8, pyco9, pyco10, pyco11, pyco12, pyco_one, pyco_two, pyco_three, pyco_four, pyco_five, pyco_six, pyco_seven, pyco_eight, pyco_nine, pyco_ten, pyco_eleven, pyco_twelve
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
@@ -228,27 +228,6 @@ time.sleep(random.uniform(50,200))
 
 # Start boilerplate
 boiled(Keys, ActionChains, driver)
-
-# Prefix list
-prefixes = [
-    "one", "two", "three", "four", "five", "six",
-    "seven", "eight", "nine", "ten", "eleven", "twelve"
-]
-
-# Loop through stages
-for idx, prefix in enumerate(prefixes):
-    job_gg = f"pythoncode_{prefix}1:"
-    script_name = f"pythoncode_{prefix}.py"
-    docker_cmd = f"docker run --rm my-app python3 {script_name}"
-
-    if idx == 0:
-        needs = "build"
-    else:
-        prev_prefix = prefixes[idx - 1]
-        needs = f"run-pythoncode_{prev_prefix}1"
-
-    workrep(time, Keys, ActionChains, driver, job_gg, needs, f" Run {script_name}", docker_cmd)
-    time.sleep(2)
 
 
 time.sleep(random.uniform(10,50))
