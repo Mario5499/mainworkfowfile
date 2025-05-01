@@ -1,0 +1,58 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t my-app:latest .
+
+      - name: Save Docker image to file
+        run: docker save my-app:latest > my-app.tar
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-app-image
+          path: my-app.tar
+
+      - name: Set matrix output
+        id: set-matrix
+        run: |
+          echo "matrix=$(jq -c '{scripts: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]}')" >> "$GITHUB_OUTPUT"
+
+  run-pythoncode:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1  # Ensures sequential execution
+      matrix: ${{fromJson(needs.build.outputs.matrix)}}
+    steps:
+      - name: Checkout code (for python scripts)
+        uses: actions/checkout@v4
+
+      - name: Download Docker image artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-app-image
+          path: .
+
+      - name: Load and tag Docker image
+        run: |
+          docker load < my-app.tar
+          IMAGE_ID=$(docker images -q | head -n1)
+          docker tag $IMAGE_ID my-app:latest
+
+      - name: Run pythoncode_${{ matrix.scripts }}.py
+        run: docker run --rm my-app:latest python3 pythoncode_${{ matrix.scripts }}.py
